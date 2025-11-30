@@ -1,0 +1,29 @@
+type Query {
+    comptes: [Compte]
+    compte(id: ID!): Compte
+    comptesByProprietaire(proprietaire: String!): [Compte]
+}
+
+type Mutation {
+    createCompte(input: CompteInput!): Compte
+    updateCompte(id: ID!, input: CompteInput!): Compte
+    deleteCompte(id: ID!): Boolean
+    faireDepot(id: ID!, montant: Float!): Compte
+    faireRetrait(id: ID!, montant: Float!): Compte
+}
+
+type Compte {
+    id: ID!
+    numeroCompte: String!
+    proprietaire: String!
+    solde: Float!
+    typeCompte: String!
+    dateCreation: String!
+}
+
+input CompteInput {
+    numeroCompte: String!
+    proprietaire: String!
+    solde: Float!
+    typeCompte: String!
+}
